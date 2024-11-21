@@ -16,7 +16,7 @@ const app=express()
 app.use(express.static(path.join(__dirname,"public")))
 
 const expressServer=app.listen(PORT,()=>{
-    console.log(`listening on port ${PORT}`)
+    // console.log(`listening on port ${PORT}`)
 })
 
 const UsersState={ //+
@@ -33,11 +33,11 @@ const io = new Server(expressServer,{
 })
 
 io.on("connection", socket =>{
-    console.log(`user ${socket.id} connected`)
+    // console.log(`user ${socket.id} connected`)
     //these below two happens when user enters or when user first enters the server
     //socket.emit goes to the user that is connected, ex when we open whatsapp we are the user that is connected to the server
-    console.log("hello")
-    console.log("bye")
+    // console.log("hello")
+    // console.log("bye")
     // console.log(buildMessage(ADMIN,"Welcome to chat app!"))
     // console.log()
     socket.emit('message', buildMessage(ADMIN,"Welcome to chat app!"))
@@ -47,7 +47,7 @@ io.on("connection", socket =>{
     //in the enter room, we have to delete the user from previous room and enter into new room specified
     socket.on('enterRoom',({name,room})=>{
         const prevRoom=getUser(socket.id)?.room
-        console.log("room 1")
+        // console.log("room 1")
         if(prevRoom){
             socket.leave(prevRoom)
             io.to(prevRoom).emit('message',buildMessage(ADMIN,`${name} has left the room`))//send message to the prev room stating the they have left the room
@@ -94,7 +94,7 @@ io.on("connection", socket =>{
                 //when last user leaves room, all other users in other rooms should be able to see the available rooms
             })
         }
-        console.log(`user' ${socket.id} disconnected`)
+        // console.log(`user' ${socket.id} disconnected`)
     })
 
     

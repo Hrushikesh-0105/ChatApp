@@ -21,7 +21,7 @@ function sendMessage(e){
             })   // sendding an object {}
         }
         catch(e){
-            console.log(e);
+            // console.log(e);
         }// as we are emitting or broadcating the message
         msgInput.value="";
         msgInput.focus()
@@ -46,7 +46,7 @@ document.querySelector(".form-join").addEventListener('submit',enterRoom);
 //changed here
 //{data} means destructuring the data
 socket.on('message',(data)=>{
-    console.log(data)
+    // console.log(data)
     // e.preventDefault()
     activity.textContent=''
     const {name,text,time}=data //destructuring data
