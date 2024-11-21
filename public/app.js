@@ -1,4 +1,4 @@
-const socket = io("ws://localhost:3500")//sends request to connect to server
+const socket = io("https://chatapp-3fd7.onrender.com")//sends request to connect to server
 //changed here the port is port of the server
 
 const activity=document.querySelector(".activity")
